@@ -17,7 +17,8 @@ namespace ArrayExamples
     {
         static void Main(string[] args)
         {
-            ArrayStuff();
+            //ArrayStuff();
+            ListStuff();
 
             Console.ReadLine();
         }
@@ -89,6 +90,63 @@ namespace ArrayExamples
             for (int i = 0; i < numbers.Length; i++)
             {
                 Console.Write(numbers[i] + " ");
+            }
+        }
+
+        static void ListStuff()
+        {
+            int playerTotal;
+            string playerToRemove;
+
+            List<string> names = new List<string>();
+
+            Console.Write("How many players are on the island?: ");
+            playerTotal = Convert.ToInt16(Console.ReadLine());
+
+            for (int i = 0; i < playerTotal; i++)
+            {
+                Console.Write("Enter a name: ");
+                names.Add(Console.ReadLine());
+            }
+
+            Console.WriteLine("Here are your Survivor players\n");
+
+            //for(int i = 0; i < names.Count; i++)
+            //{
+            //    Console.WriteLine(names[i]+ " ");
+            //}
+
+            foreach (string name in names)
+            {
+                Console.WriteLine(name + " ");
+            }
+
+            names.Sort();
+            names.Reverse();
+            Console.WriteLine();
+
+            foreach (string name in names)
+            {
+                Console.WriteLine(name + " ");
+            }
+
+            Console.Write("Vote someone off the island: ");
+            playerToRemove = Console.ReadLine();
+
+            if(names.Contains(playerToRemove))
+            {
+                names.Remove(playerToRemove);
+            }
+            else
+            {
+                Console.WriteLine($"{playerToRemove} does not exist");
+            }
+
+            Console.WriteLine("The remaining players are: ");
+
+            foreach (string name in names)
+            {
+                Console.WriteLine(name + " ");
             }
         }
     }
